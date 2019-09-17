@@ -1,7 +1,8 @@
-from exporters.tptp_exporter import TPTPHeader
-from generators import WeightedSequence
-from generators.factories import FunctorFactory, PredicateFactory, AtomFactory, LiteralFactory, CNFClauseFactory
-from generators.randomcnfgenerator import RandomCNFGenerator
+from src.exporters.tptp_exporter import TPTPHeader
+from src.generators import WeightedSequence
+from src.generators.factories import FunctorFactory, PredicateFactory, AtomFactory, LiteralFactory, CNFClauseFactory
+from src.generators.randomcnfgenerator import RandomCNFGenerator
+from src.generators.thresholdregulator import ThresholdRegulator
 
 
 def dataset1():
@@ -15,6 +16,7 @@ def dataset1():
     literals = WeightedSequence.from_weighted_values(literals)
     clauses = CNFClauseFactory.generate_clauses(lengths=[1, 2, 3, 4])
     clauses = WeightedSequence.from_weighted_values(clauses)
+
     g = RandomCNFGenerator(
         functors=functors.values,
         functor_weights=functors.weights,
@@ -34,9 +36,16 @@ def dataset1():
     print(f'{g.literals=}')
     print(f'{g.clauses=}')
 
-    formula = g.generate_cnf_formula(
-        number_of_clauses=2,
+    formula = g.generate_cnf_formula(number_of_clauses=2)
+    tr = ThresholdRegulator(
+        number_of_clauses=ThresholdRegulator.range(10, threshold=0.5, delta=5),
+        number_of_literals=ThresholdRegulator.range(10, threshold=0.5, delta=5),
+        number_of_atoms=ThresholdRegulator.range(10, threshold=0.5, delta=5),
+        number_of_predicates=ThresholdRegulator.range(10, threshold=0.5, delta=5),
+        number_of_functors=ThresholdRegulator.range(10, threshold=0.5, delta=5),
+        number_of_variables=ThresholdRegulator.range(10, threshold=0.5, delta=5)
     )
+    tr.tune_cnf_formula(generator=g, initial_cnf_formula=formula)
     t = TPTPHeader()
     t.read_from(formula)
     print(t.get_header())
