@@ -19,13 +19,14 @@ def dataset1():
         clauses=clauses,
     )
 
-    print(f'{g.functors}')
-    print(f'{g.predicates}')
-    print(f'{g.atoms}')
-    print(f'{g.literals}')
-    print(f'{g.clauses}')
+    print(f'{g.functor_placeholders}')
+    print(f'{g.predicates_placeholders}')
+    print(f'{g.atom_placeholders}')
+    print(f'{g.literal_placeholders}')
+    print(f'{g.clause_placeholders}')
 
-    formula = g.generate_cnf_formula(number_of_clauses=4)
+    formula = g.cnf_formula(number_of_clauses=4)
+    g.recursive_generate(formula)
     tr = ThresholdRegulator(
         number_of_clauses=ThresholdRegulator.range(10, threshold=0.5, delta=5),
         number_of_literals=ThresholdRegulator.range(10, threshold=0, delta=2),
