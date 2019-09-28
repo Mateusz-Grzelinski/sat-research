@@ -1,7 +1,6 @@
 from src.exporters.tptp_exporter import TPTPHeader
 from src.generators.factories import FunctorFactory, PredicateFactory, AtomFactory, LiteralFactory, CNFClauseFactory
 from src.generators.randomcnfgenerator import RandomCNFGenerator
-from src.generators.thresholdregulator import ThresholdRegulator
 
 
 def dataset1():
@@ -19,19 +18,21 @@ def dataset1():
         clauses=clauses,
     )
 
-    print(f'Elements in generator: {g.ast_elements}')
+    from pprint import pprint
+    print('Elements in generator: ')
+    pprint(g.ast_elements)
 
     formula = g.cnf_formula(number_of_clauses=4)
     g.recursive_generate(formula)
-    tr = ThresholdRegulator(
-        number_of_clauses=ThresholdRegulator.range(10, threshold=0.5, delta=5),
-        number_of_literals=ThresholdRegulator.range(10, threshold=0, delta=2),
-        number_of_atoms=ThresholdRegulator.range(10, threshold=0.5, delta=5),
-        number_of_predicates=ThresholdRegulator.range(10, threshold=0.5, delta=5),
-        number_of_functors=ThresholdRegulator.range(10, threshold=0.5, delta=5),
-        number_of_variables=ThresholdRegulator.range(10, threshold=0.5, delta=5)
-    )
-    tr.tune_cnf_formula(generator=g, initial_cnf_formula=formula)
+    # tr = ThresholdRegulator(
+    #     number_of_clauses=ThresholdRegulator.range(10, threshold=0.5, delta=5),
+    #     number_of_literals=ThresholdRegulator.range(10, threshold=0, delta=2),
+    #     number_of_atoms=ThresholdRegulator.range(10, threshold=0.5, delta=5),
+    #     number_of_predicates=ThresholdRegulator.range(10, threshold=0.5, delta=5),
+    #     number_of_functors=ThresholdRegulator.range(10, threshold=0.5, delta=5),
+    #     number_of_variables=ThresholdRegulator.range(10, threshold=0.5, delta=5)
+    # )
+    # tr.tune_cnf_formula(generator=g, initial_cnf_formula=formula)
     t = TPTPHeader()
     t.read_from(formula)
     print(t.get_header())
