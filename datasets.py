@@ -19,11 +19,7 @@ def dataset1():
         clauses=clauses,
     )
 
-    print(f'{g.functor_placeholders}')
-    print(f'{g.predicates_placeholders}')
-    print(f'{g.atom_placeholders}')
-    print(f'{g.literal_placeholders}')
-    print(f'{g.clause_placeholders}')
+    print(f'Elements in generator: {g.ast_elements}')
 
     formula = g.cnf_formula(number_of_clauses=4)
     g.recursive_generate(formula)
