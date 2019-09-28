@@ -22,7 +22,7 @@ def dataset1():
     print('Elements in generator: ')
     pprint(g.ast_elements)
 
-    formula = g.cnf_formula(number_of_clauses=4)
+    formula = g.random_cnf_formula(number_of_clauses=4)
     g.recursive_generate(formula)
     # tr = ThresholdRegulator(
     #     number_of_clauses=ThresholdRegulator.range(10, threshold=0.5, delta=5),
