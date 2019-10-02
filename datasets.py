@@ -1,14 +1,14 @@
-from src.ast.fol import Variable
+from src.ast.fol.variable import Variable
 from src.exporters.tptp_exporter import TPTPHeader
 from src.generators.factories import FunctorFactory, PredicateFactory, AtomFactory, LiteralFactory, CNFClauseFactory
 from src.generators.randomcnfgenerator import RandomCNFGenerator
-from src.generators.regulator import ThresholdRegulator, Range
+from src.generators.regulator import SimpleRegulator, Range
 
 
 def dataset1():
     functors = FunctorFactory.generate_functors(names=['f'], arities=[0, 1], max_recursion_depth=1)
     predicates = PredicateFactory.generate_predicates(names=['p'], arities=[1, 2])
-    atoms = AtomFactory.generate_atoms({'', '='})
+    atoms = AtomFactory.generate_atoms({''})
     literals = LiteralFactory.generate_literals()
     clauses = CNFClauseFactory.generate_clauses(lengths=[1, 2, 3, 4])
     # variables = VariableFactory.generate_variables(base_name='v', )
@@ -28,13 +28,9 @@ def dataset1():
 
     formula = g.random_cnf_formula(number_of_clauses=4)
     g.replace_inner_placeholders(formula)
-    tr = ThresholdRegulator(
-        allowed_clause_range=ThresholdRegulator.range(10, threshold=0.5, delta=5),
+    tr = SimpleRegulator(
+        allowed_clause_range=Range.compute(number=10, threshold=0.5, min_delta=5),
         allowed_literal_range=(8, 10),
-        # number of atoms is always eq to number of literals
-        allowed_predicate_range=Range(),
-        allowed_functor_range=Range(),
-        allowed_variable_range=Range()
     )
     print('Allowed ranges in regulator:')
     pprint(tr.allowed_range)
