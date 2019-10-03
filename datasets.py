@@ -1,9 +1,10 @@
-from src.ast.fol.variable import Variable
-from src.exporters.tptp_exporter import TPTPHeader
 from src.generators.factories import FunctorFactory, PredicateFactory, AtomFactory, LiteralFactory, CNFClauseFactory
 from src.generators.randomcnfgenerator import RandomCNFGenerator
 from src.generators.regulator import SimpleRegulator, Range
 from src.placeholders.fol import VariablePlaceholder, FunctorPlaceholder
+
+from src.ast.first_order_logic.variable import Variable
+from src.exporters.tptp_exporter import TPTPHeader
 
 
 def dataset1():
