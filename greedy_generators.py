@@ -4,11 +4,11 @@ import src.generators.signatures.first_order_logic as fof
 from src.generators.range import Range
 
 if __name__ == '__main__':
-    f = fof.FunctorSignatureGenerator([0], 0)
+    f = fof.FunctorSignatureGenerator(arities=[0, 1], max_recursion_depth=0)
     print('functors:')
     pprint(list(f.generate()))
 
-    p = fof.PredicateSignatureGenerator(arities=[1], functor_gen=f)
+    p = fof.PredicateSignatureGenerator(arities=[0, 1], functor_gen=f)
     print('predicates:')
     pprint(list(p.generate()))
 
@@ -21,8 +21,8 @@ if __name__ == '__main__':
     pprint(list(l.generate()))
 
     c = fof.CNFClauseSignatureGenerator(clause_lengths={1, 3}, literal_gen=l)
-    print('clauses:')
-    pprint(list(c.generate()))
+    # print('clauses:')
+    # pprint(list(c.generate()))
 
     F = fof.CNFFormulaSignatureGenerator(clause_gen=c)
     print('formulas:')
