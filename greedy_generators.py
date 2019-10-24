@@ -16,7 +16,7 @@ if __name__ == '__main__':
     print('atoms:')
     pprint(list(a.generate()))
 
-    l = fof.LiteralSignatureGenerator(allow_positive=True, allow_negated=True, atom_gen=a)
+    l = fof.LiteralSignatureGenerator(atom_gen=a)
     print('literals:')
     pprint(list(l.generate()))
 
@@ -30,10 +30,12 @@ if __name__ == '__main__':
         number_of_clauses=Range(min=4, max=9),
         number_of_literals=Range(min=4, max=8),
     )
-    pprint(f'{next(gen)=}')
-    gen.send(True)
-    pprint(f'{next(gen)=}')
-    pprint(f'{next(gen)=}')
+    for f in enumerate(gen):
+        print(f)
+        break
+    # pprint(f'{next(gen)=}')
+    # pprint(f'{next(gen)=}')
+    # pprint(f'{next(gen)=}')
 
     # f1 = Functor('f', items=[Variable('V')])
     # f2 = Functor('f', items=[Variable('X')])
