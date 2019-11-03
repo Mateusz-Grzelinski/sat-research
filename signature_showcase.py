@@ -1,7 +1,6 @@
 from pprint import pprint
 
 import src.generators._signatures.first_order_logic as fol
-from src.generators._range import IntegerRange
 
 if __name__ == '__main__':
     f = fol.FunctorSignatureGenerator(arities=[0, 1], max_recursion_depth=0)
@@ -24,12 +23,9 @@ if __name__ == '__main__':
     # print('clauses:')
     # pprint(list(c.generate()))
 
-    F = fol.CNFFormulaSignatureGenerator(clause_gen=c)
+    F = fol.CNFFormulaSignatureGenerator(clause_gens={c: 2})
     print('formulas:')
-    gen = F.generate(
-        number_of_clauses=IntegerRange(min=4, max=9),
-        number_of_literals=IntegerRange(min=4, max=8),
-    )
+    gen = F.generate()
     for f in enumerate(gen):
         print(f)
         break

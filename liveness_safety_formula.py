@@ -1,7 +1,7 @@
 from pprint import pprint
 
 from src.ast.exporters.tptp import TPTPHeader
-from src.generators._range import IntegerRange
+from src.generators import IntegerRange
 from src.generators.presets.first_order_logic import CNFFormulaGenerator
 
 if __name__ == '__main__':
