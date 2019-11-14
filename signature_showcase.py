@@ -11,7 +11,7 @@ if __name__ == '__main__':
     print('predicates:')
     pprint(list(p.generate()))
 
-    a = fol.AtomSignatureGenerator(allowed_connectives={''}, predicate_gen=p)
+    a = fol.AtomSignatureGenerator(connectives={''}, predicate_gen=p)
     print('atoms:')
     pprint(list(a.generate()))
 
