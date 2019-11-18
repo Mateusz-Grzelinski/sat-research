@@ -1,3 +1,5 @@
+import math
+
 import src.ast.first_order_logic as fol
 from src.ast.exporters.tptp import TPTPExporter
 from src.generators import IntegerRange
