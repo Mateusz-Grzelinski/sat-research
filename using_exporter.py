@@ -1,32 +1,30 @@
 import math
+import sys
 
-import src.ast.first_order_logic as fol
 from src.ast.exporters.tptp import TPTPExporter
 from src.generators import IntegerRange
 from src.generators.presets.first_order_logic import CNFFormulaGenerator
 
-if __name__ == '__main__':
-    number_of_items = 5
+sys.setrecursionlimit(1500)
 
+if __name__ == '__main__':
     gen = CNFFormulaGenerator(
-        functor_names={'f1'}, functor_arity={0}, functor_recursion_depth=0,
-        predicate_names={'p1', 'p2'}, predicate_arities={0, 1},
+        functor_names={'f1', 'f2', 'f3'}, functor_arity={0}, functor_recursion_depth=0,
+        predicate_names={'p1', 'p2', 'p3'}, predicate_arities={0, 1},
         atom_connectives={''},
-        clause_lengths={1, 2, 3},
+        clause_lengths={1, 2, 3, 4, 5, 6, 7, 8, 9},
         variable_names={'V1', 'V2'},
-        number_of_clauses=IntegerRange(min=3, max=10),
-        number_of_literals=IntegerRange(min=1, max=30)
+        number_of_clauses=IntegerRange(min=500, max=1000),
+        number_of_literals=IntegerRange(min=100, max=math.inf)
     ).generate()
 
     exporter = TPTPExporter(
-        output_dir='./temp-out',
-        filename_handle=lambda formula_info: f'clauses_{formula_info.number_of_instances[fol.CNFClause]}_'
-                                             f'atoms_{formula_info.number_of_instances[fol.Atom]}_'
-                                             f'predicates_{formula_info.number_of_instances[fol.Predicate]}_'
-                                             f'functors_{formula_info.number_of_instances[fol.Functor]}_'
-                                             f'vars_{formula_info.number_of_instances[fol.Variable]}_'
+        output_dir='./test-big',
+        filename_handle=lambda formula_info: ''
     )
 
-    for i in range(number_of_items):
-        formula = next(gen)
+    for i, formula in enumerate(gen):
+        # print(i, formula)
         exporter.export(expression=formula, filename_suffix=str(i))
+        if i >= 1:
+            break
