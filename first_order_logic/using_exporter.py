@@ -15,7 +15,8 @@ if __name__ == '__main__':
         atom_connectives={''},
         clause_lengths={i for i in range(7, 10)},
         number_of_clauses=IntegerRange(min=800, max=1000),
-        number_of_literals=IntegerRange(min=1000, max=math.inf)
+        number_of_literals=IntegerRange(min=1000, max=math.inf),
+        literal_negation_chance=0.1
     ).generate()
 
     exporter = TPTPExporter(

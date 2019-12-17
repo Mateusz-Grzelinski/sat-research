@@ -12,7 +12,8 @@ if __name__ == '__main__':
         clause_lengths={1, 2, 3},
         variable_names={f'V{i}' for i in range(10)},
         number_of_clauses=IntegerRange(min=3, max=100),
-        number_of_literals=IntegerRange(min=1, max=30)
+        number_of_literals=IntegerRange(min=1, max=30),
+        literal_negation_chance=0.1
     )
     formula_gen = gen.generate()
     formula = next(formula_gen)
