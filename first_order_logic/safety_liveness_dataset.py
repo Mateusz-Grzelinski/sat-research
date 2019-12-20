@@ -2,7 +2,7 @@ import sys
 
 from src.ast.exporters.tptp import TPTPExporter
 from src.generators import IntegerRange
-from src.generators.presets.first_order_logic import CNFFormulaGenerator
+from src.generators.presets.first_order_logic import CNFSafetyLivenessGenerator
 
 sys.setrecursionlimit(4000)
 
@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
     for number_of_clauses in test_number_of_clauses:
         for number_of_literals in test_number_of_literals:
-            gen = CNFFormulaGenerator(
+            gen = CNFSafetyLivenessGenerator(
                 variable_names={f'V{i}' for i in range(number_of_variables)},
                 functor_names={f'f{i}' for i in range(20)}, functor_arity={i for i in range(5)},
                 functor_recursion_depth=0,
@@ -29,7 +29,7 @@ if __name__ == '__main__':
             )
 
             exporter = TPTPExporter(
-                output_dir=f'./test-small/clauses{number_of_clauses}-literals{number_of_literals}',
+                output_dir=f'./test-cnf/clauses{number_of_clauses}-literals{number_of_literals}',
                 filename_handle=lambda formula_info: ''
             )
 
