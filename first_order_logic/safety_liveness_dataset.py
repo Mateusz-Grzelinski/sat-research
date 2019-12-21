@@ -18,7 +18,7 @@ if __name__ == '__main__':
         for number_of_literals in test_number_of_literals:
             gen = CNFSafetyLivenessGenerator(
                 variable_names={f'V{i}' for i in range(number_of_variables)},
-                functor_names={f'f{i}' for i in range(20)}, functor_arity={i for i in range(5)},
+                functor_names={f'f{i}' for i in range(20)}, functor_arity={0},
                 functor_recursion_depth=0,
                 predicate_names={f'p{i}' for i in range(20)}, predicate_arities={i for i in range(5)},
                 atom_connectives={''},
