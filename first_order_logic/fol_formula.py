@@ -13,8 +13,7 @@ if __name__ == '__main__':
         number_of_existential_quantifiers=0,
         number_of_universal_quantifiers=0,
     )
-    formula_gen = gen.generate()
-    formula = next(formula_gen)
+    formula = gen.generate()
 
     print('Generated formula:')
     pprint(formula)
