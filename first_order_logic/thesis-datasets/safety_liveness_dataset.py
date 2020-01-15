@@ -4,6 +4,8 @@ from src.ast.exporters.tptp import TPTPExporter
 from src.generators import IntegerRange
 from src.generators.presets.first_order_logic import CNFSafetyLivenessGenerator
 
+logging.basicConfig(level=logging.DEBUG)
+
 # sys.setrecursionlimit(4000)
 
 if __name__ == '__main__':
@@ -38,4 +40,4 @@ if __name__ == '__main__':
                 logging.info(f'generating formula {i}/{number_of_formulas}')
                 formula = gen.generate()
                 exporter.export(expression=next(formula), filename_suffix=str(i))
-                break
+        break
