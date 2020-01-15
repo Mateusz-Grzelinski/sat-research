@@ -40,4 +40,3 @@ if __name__ == '__main__':
                 logging.info(f'generating formula {i}/{number_of_formulas}')
                 formula = gen.generate()
                 exporter.export(expression=next(formula), filename_suffix=str(i))
-        break
