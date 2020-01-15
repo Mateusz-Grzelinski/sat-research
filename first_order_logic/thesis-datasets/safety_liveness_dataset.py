@@ -30,13 +30,10 @@ if __name__ == '__main__':
                 literal_negation_chance=0.1,
             )
 
-            exporter = TPTPExporter(
-                output_dir=f'./test-cnf/clauses{number_of_clauses}-literals{number_of_literals}',
-                filename_handle=lambda formula_info: ''
-            )
+            exporter = TPTPExporter(output_dir=f'./test-cnf/clauses{number_of_clauses}-literals{number_of_literals}')
 
             for i in range(number_of_formulas):
                 # print(i, formula)
                 logging.info(f'generating formula {i}/{number_of_formulas}')
                 formula = gen.generate()
-                exporter.export(expression=next(formula), filename_suffix=str(i))
+                exporter.export(expression=next(formula), filename=str(i))

@@ -27,6 +27,6 @@ if __name__ == '__main__':
     for i, formula in enumerate(gen):
         # print(i, formula)
         offset = 0
-        exporter.export(expression=formula, filename_suffix=str(i + offset))
+        exporter.export(expression=formula, filename=str(i + offset))
         if i + offset > 99:
             break
