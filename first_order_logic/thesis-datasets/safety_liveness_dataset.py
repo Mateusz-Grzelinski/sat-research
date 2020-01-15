@@ -10,13 +10,12 @@ logging.basicConfig(level=logging.DEBUG)
 
 if __name__ == '__main__':
     number_of_formulas = 50
-    number_of_variables = 10
 
     test_number_of_clauses = [100, 200, 300, 400, 500]
     test_number_of_literals = [1000]
     threshold = 0.05
 
-    variable_names = [f'V{i}' for i in range(number_of_variables)]
+    variable_names = [f'V{i}' for i in range(10)]
     functor_names = [f'f{i}' for i in range(20)]
     predicate_names = [f'p{i}' for i in range(20)]
 

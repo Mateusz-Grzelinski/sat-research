@@ -41,7 +41,7 @@ if __name__ == '__main__':
             clause_lengths={i for i in range(10, 40)},
             negation_probability=0.1)
         exporter = InkresatExporter(
-            output_dir=f'./test-inkresat-cnf-atom-clause-ratio/clauses{number_of_clauses}-variables{number_of_variables_with_eventually_connectives + number_of_variables_with_always_connectives}/',
+            output_dir=f'test-inkresat-cnf-atom-clause-ratio/clauses{number_of_clauses}-variables{number_of_variables_with_eventually_connectives + number_of_variables_with_always_connectives}/',
             statistics_to_file=True,
             additional_statistics={'number_of_names_for_variables': len(variable_names)}
         )
