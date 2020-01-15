@@ -16,13 +16,17 @@ if __name__ == '__main__':
     test_number_of_literals = [1000]
     threshold = 0.05
 
+    variable_names = [f'V{i}' for i in range(number_of_variables)]
+    functor_names = [f'f{i}' for i in range(20)]
+    predicate_names = [f'p{i}' for i in range(20)]
+
     for number_of_clauses in test_number_of_clauses:
         for number_of_literals in test_number_of_literals:
             gen = CNFSafetyLivenessGenerator(
-                variable_names={f'V{i}' for i in range(number_of_variables)},
-                functor_names={f'f{i}' for i in range(20)}, functor_arity={0},
+                variable_names=variable_names,
+                functor_names=functor_names, functor_arity={0},
                 functor_recursion_depth=0,
-                predicate_names={f'p{i}' for i in range(20)}, predicate_arities={i for i in range(5)},
+                predicate_names=predicate_names, predicate_arities={i for i in range(5)},
                 atom_connectives={''},
                 clause_lengths={i for i in range(2, 11)},
                 number_of_clauses=IntegerRange.from_relative(number_of_clauses, threshold),
@@ -30,7 +34,11 @@ if __name__ == '__main__':
                 literal_negation_chance=0.1,
             )
 
-            exporter = TPTPExporter(output_dir=f'./test-cnf/clauses{number_of_clauses}-literals{number_of_literals}')
+            exporter = TPTPExporter(
+                output_dir=f'./test-cnf/clauses{number_of_clauses}-literals{number_of_literals}',
+                additional_statistics={'number_of_vairable_names': len(variable_names),
+                                       'number_of_predicate_names': len(predicate_names),
+                                       'number_of_functor_names': len(functor_names)})
 
             for i in range(number_of_formulas):
                 # print(i, formula)

@@ -19,10 +19,7 @@ if __name__ == '__main__':
         literal_negation_chance=0.1
     ).generate()
 
-    exporter = TPTPExporter(
-        output_dir='./test-medium',
-        filename_handle=lambda formula_info: ''
-    )
+    exporter = TPTPExporter(output_dir='./test-medium', )
 
     for i, formula in enumerate(gen):
         # print(i, formula)
