@@ -1,10 +1,10 @@
-import sys
+import logging
 
 from src.ast.exporters.tptp import TPTPExporter
 from src.generators import IntegerRange
 from src.generators.presets.first_order_logic import CNFSafetyLivenessGenerator
 
-sys.setrecursionlimit(4000)
+# sys.setrecursionlimit(4000)
 
 if __name__ == '__main__':
     number_of_formulas = 50
@@ -35,5 +35,7 @@ if __name__ == '__main__':
 
             for i in range(number_of_formulas):
                 # print(i, formula)
+                logging.info(f'generating formula {i}/{number_of_formulas}')
                 formula = gen.generate()
                 exporter.export(expression=next(formula), filename_suffix=str(i))
+                break
