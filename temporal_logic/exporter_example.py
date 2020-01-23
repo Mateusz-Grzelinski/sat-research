@@ -1,9 +1,9 @@
 import logging
 
-from src.ast.exporters.inkresat.inkresat_exporter import InkresatExporter
 from src.generators import IntegerRange
 from src.generators.presets.propositional_temporal_logic.cnf_propositional_temporal_logic_generator import \
     CNFPropositionalTemporalLogicGenerator
+from src.syntax_tree.exporters.inkresat.inkresat_exporter import InkresatExporter
 
 logging.basicConfig(level=logging.DEBUG)
 

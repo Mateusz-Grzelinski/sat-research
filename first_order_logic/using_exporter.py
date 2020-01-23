@@ -1,9 +1,9 @@
 import math
 import sys
 
-from src.ast.exporters.tptp import TPTPExporter
 from src.generators import IntegerRange
 from src.generators.presets.first_order_logic import CNFFormulaGenerator
+from src.syntax_tree.exporters.tptp import TPTPExporter
 
 sys.setrecursionlimit(4000)
 
@@ -22,8 +22,7 @@ if __name__ == '__main__':
     exporter = TPTPExporter(output_dir='./test-medium', )
 
     for i, formula in enumerate(gen):
-        # print(i, formula)
-        offset = 0
-        exporter.export(expression=formula, filename=str(i + offset))
-        if i + offset > 99:
+        print(i, formula)
+        exporter.export(expression=formula, filename=str(i))
+        if i > 9:
             break

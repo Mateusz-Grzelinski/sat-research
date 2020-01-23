@@ -1,8 +1,8 @@
 import logging
 
-from src.ast.exporters.tptp import TPTPExporter
 from src.generators import IntegerRange
 from src.generators.presets.first_order_logic import CNFSafetyLivenessGenerator
+from src.syntax_tree.exporters.tptp import TPTPExporter
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -26,7 +26,7 @@ if __name__ == '__main__':
                 functor_names=functor_names, functor_arity={0},
                 functor_recursion_depth=0,
                 predicate_names=predicate_names, predicate_arities={i for i in range(5)},
-                atom_connectives={''},
+                atom_connectives={None},
                 clause_lengths={i for i in range(2, 11)},
                 number_of_clauses=IntegerRange.from_relative(number_of_clauses, threshold),
                 number_of_literals=IntegerRange.from_relative(number_of_literals, threshold),
@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
             exporter = TPTPExporter(
                 output_dir=f'./test-cnf/clauses{number_of_clauses}-literals{number_of_literals}',
-                additional_statistics={'number_of_vairable_names': len(variable_names),
+                additional_statistics={'number_of_variable_names': len(variable_names),
                                        'number_of_predicate_names': len(predicate_names),
                                        'number_of_functor_names': len(functor_names)})
 
