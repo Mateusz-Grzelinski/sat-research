@@ -3,7 +3,7 @@ import logging
 from src.generators import IntegerRange
 from src.generators.presets.propositional_temporal_logic.cnf_propositional_temporal_logic_generator import \
     CNFPropositionalTemporalLogicGenerator
-from src.syntax_tree.exporters.inkresat.inkresat_exporter import InkresatExporter
+from src.syntax_tree.propositional_temporal_logic.exporters.inkresat import InkresatExporter
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -27,7 +27,7 @@ if __name__ == '__main__':
         for i, formula in enumerate(system_rpoperty_gen.generate()):
             # print(str(formula))
             # print(formula.get_info())
-            exporter.export(formula, filename=str(i))
+            exporter.get_formula_as_string()
             if i == number_of_instances_in_set:
                 break
         else:

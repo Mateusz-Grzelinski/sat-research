@@ -3,7 +3,6 @@ import sys
 
 from src.generators import IntegerRange
 from src.generators.presets.first_order_logic import CNFFormulaGenerator
-from src.syntax_tree.exporters.tptp import TPTPExporter
 
 sys.setrecursionlimit(4000)
 
@@ -19,10 +18,7 @@ if __name__ == '__main__':
         literal_negation_chance=0.1
     ).generate()
 
-    exporter = TPTPExporter(output_dir='./test-medium', )
-
     for i, formula in enumerate(gen):
-        print(i, formula)
-        exporter.export(expression=formula, filename=str(i))
+        print(formula.get_as_tptp().getvalue())
         if i > 9:
             break

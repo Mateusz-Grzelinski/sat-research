@@ -2,7 +2,7 @@ from pprint import pprint
 
 from src.generators import IntegerRange
 from src.generators.presets.first_order_logic import CNFFormulaGenerator
-from src.syntax_tree.exporters.tptp import TPTPHeader
+from src.syntax_tree.first_order_logic.exporters.tptp import TPTPHeader
 
 if __name__ == '__main__':
     gen = CNFFormulaGenerator(
@@ -18,10 +18,10 @@ if __name__ == '__main__':
     formula_gen = gen.generate()
     formula = next(formula_gen)
     print('Currently supported statistics: ')
-    pprint(formula.get_info().__dict__)
+    pprint(formula.get_formula_info().__dict__)
 
     print('Generated formula:')
     header = TPTPHeader()
-    header.read_from(formula.get_info())
+    header.read_from(formula.get_formula_info())
     print(header.get_header())
-    print(str(formula))
+    print(formula.get_as_tptp().getvalue())

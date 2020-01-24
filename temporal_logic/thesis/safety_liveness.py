@@ -5,7 +5,7 @@ from concurrent.futures.process import ProcessPoolExecutor
 from src.generators import IntegerRange
 from src.generators.presets.propositional_temporal_logic.cnf_propositional_temporal_logic_generator import \
     CNFPropositionalTemporalLogicGenerator
-from src.syntax_tree.exporters.inkresat.inkresat_exporter import InkresatExporter
+from src.syntax_tree.propositional_temporal_logic.exporters.inkresat import InkresatExporter
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -13,7 +13,7 @@ logging.basicConfig(level=logging.DEBUG)
 def job(exporter, generator, max_runs):
     i = 0
     for i, formula in enumerate(generator.generate()):
-        exporter.export(formula, filename=str(i))
+        exporter.get_formula_as_string()
         if i == max_runs:
             return
     logging.error(f'not enough formulas, ended at {i}, expected {max_runs}')

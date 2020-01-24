@@ -2,7 +2,6 @@ import logging
 
 from src.generators import IntegerRange
 from src.generators.presets.first_order_logic import CNFSafetyLivenessGenerator
-from src.syntax_tree.exporters.tptp import TPTPExporter
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -33,14 +32,15 @@ if __name__ == '__main__':
                 literal_negation_chance=0.1,
             )
 
-            exporter = TPTPExporter(
-                output_dir=f'./test-cnf/clauses{number_of_clauses}-literals{number_of_literals}',
-                additional_statistics={'number_of_variable_names': len(variable_names),
-                                       'number_of_predicate_names': len(predicate_names),
-                                       'number_of_functor_names': len(functor_names)})
+            # exporter = TPTPExporter(
+            #     output_dir=f'./test-cnf/clauses{number_of_clauses}-literals{number_of_literals}',
+            #     additional_statistics={'number_of_variable_names': len(variable_names),
+            #                            'number_of_predicate_names': len(predicate_names),
+            #                            'number_of_functor_names': len(functor_names)})
 
             for i in range(number_of_formulas):
                 # print(i, formula)
                 logging.info(f'generating formula {i}/{number_of_formulas}')
-                formula = gen.generate()
-                exporter.export(expression=next(formula), filename=str(i))
+                formula_gen = gen.generate()
+                formula = next(formula_gen)
+                print(formula.get_as_tptp().getvalue())

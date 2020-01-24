@@ -16,3 +16,4 @@ if __name__ == '__main__':
 
     print('Generated formula:')
     print(str(formula))
+    print(formula.get_as_tptp().getvalue())
