@@ -32,15 +32,18 @@ if __name__ == '__main__':
                 literal_negation_chance=0.1,
             )
 
-            # exporter = TPTPExporter(
-            #     output_dir=f'./test-cnf/clauses{number_of_clauses}-literals{number_of_literals}',
-            #     additional_statistics={'number_of_variable_names': len(variable_names),
-            #                            'number_of_predicate_names': len(predicate_names),
-            #                            'number_of_functor_names': len(functor_names)})
-
             for i in range(number_of_formulas):
-                # print(i, formula)
-                logging.info(f'generating formula {i}/{number_of_formulas}')
+                out_file_path = f'./test-cnf/clauses{number_of_clauses}-literals{number_of_literals}/{i}'
+                logging.info(f'generating formula {i}/{number_of_formulas}: {out_file_path}')
                 formula_gen = gen.generate()
                 formula = next(formula_gen)
-                print(formula.get_as_tptp().getvalue())
+                # print(formula.get_as_tptp().getvalue())
+                formula.save_to_file(path=out_file_path)
+                formula.save_info_to_file(
+                    path=out_file_path,
+                    additional_statistics={
+                        'number_of_variable_names': len(variable_names),
+                        'number_of_predicate_names': len(predicate_names),
+                        'number_of_functor_names': len(functor_names)
+                    }
+                )
