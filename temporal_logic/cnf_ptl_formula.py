@@ -37,7 +37,7 @@ if __name__ == '__main__':
             f'clauses{number_of_clauses}-variables{number_of_variables_with_eventually_connectives + number_of_variables_with_always_connectives}',
             f'{i}')
         formula.save_to_file(path=path)
-        formula.save_info_to_file(path=path,
+        formula.save_info_to_file(path=path + '.fml',
                                   additional_statistics={'number_of_names_for_variables': len(variable_names)})
         logging.info(
             f"Done generating {number_of_instances_in_set} formulas with {number_of_clauses} variables: {i}")
