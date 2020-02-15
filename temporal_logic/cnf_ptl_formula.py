@@ -18,7 +18,7 @@ if __name__ == '__main__':
     negation_probability = 0.1
     variable_names = [f'V{i}' for i in range(10)]
 
-    system_rpoperty_gen = CNFPropositionalTemporalLogicGenerator(
+    system_property_gen = CNFPropositionalTemporalLogicGenerator(
         variable_names=variable_names,
         number_of_variables_without_connective=IntegerRange.from_relative(number_of_variables_without_connective,
                                                                           threshold),
@@ -31,7 +31,7 @@ if __name__ == '__main__':
         negation_probability=negation_probability
     )
 
-    for i, formula in enumerate(system_rpoperty_gen.generate()):
+    for i, formula in enumerate(system_property_gen.generate()):
         path = os.path.join(
             '_test-formulas',
             f'clauses{number_of_clauses}-variables{number_of_variables_with_eventually_connectives + number_of_variables_with_always_connectives}',
