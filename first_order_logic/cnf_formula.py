@@ -19,11 +19,11 @@ def method_with_solver():
     formula_gen = gen.generate()
     formula = next(formula_gen)
     print('Currently supported statistics: ')
-    pprint(formula.get_formula_info().__dict__)
+    pprint(formula.get_formula_info(normal_form='cnf').__dict__)
 
     print('Generated formula:')
     header = TPTPHeader()
-    header.read_from(formula.get_formula_info())
+    header.read_from(formula.get_formula_info(normal_form='cnf'))
     print(header.get_header())
     print(formula.get_as_tptp().getvalue())
 
@@ -41,16 +41,18 @@ def method_with_no_solver():
         literal_negation_chance=0.1
     )
     formula = gen.generate()
-    # print('Currently supported statistics: ')
-    # pprint(formula.get_formula_info().__dict__)
+    print('Currently supported statistics: ')
+    pprint(formula.get_formula_info(normal_form='cnf').__dict__)
 
     print('Generated formula:')
-    # header = TPTPHeader()
-    # header.read_from(formula.get_formula_info(normal_forma='cnf'))
-    # print(header.get_header())
-    print(formula.get_as_tptp().getvalue())
+    header = TPTPHeader()
+    header.read_from(formula.get_formula_info(normal_form='cnf'))
+    print(header.get_header())
+    print(formula.get_as_tptp(normal_form='cnf').getvalue())
 
 
 if __name__ == '__main__':
     method_with_no_solver()
-    # method_with_solver()
+    print('=' * 80)
+    print('=' * 80)
+    method_with_solver()

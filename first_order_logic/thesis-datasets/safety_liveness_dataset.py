@@ -38,9 +38,10 @@ if __name__ == '__main__':
                 formula_gen = gen.generate()
                 formula = next(formula_gen)
                 # print(formula.get_as_tptp().getvalue())
-                formula.save_to_file(path=out_file_path)
+                formula.save_to_file(path=out_file_path, normal_form='cnf')
                 formula.save_info_to_file(
-                    path=out_file_path,
+                    path=out_file_path + '.p',
+                    normal_form='cnf',
                     additional_statistics={
                         'number_of_variable_names': len(variable_names),
                         'number_of_predicate_names': len(predicate_names),
