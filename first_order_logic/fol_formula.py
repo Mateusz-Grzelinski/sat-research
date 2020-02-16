@@ -1,7 +1,7 @@
-from src.generators.presets.first_order_logic import FormulaGenerator
+from src.generators.presets.first_order_logic import FirstOrderLogicFormulaPreset
 
 if __name__ == '__main__':
-    gen = FormulaGenerator(
+    gen = FirstOrderLogicFormulaPreset(
         functor_names={f'f{i}' for i in range(10)}, functor_arity={0}, functor_recursion_depth=0,
         predicate_names={f'p{i}' for i in range(10)}, predicate_arities={0, 1},
         variable_names={f'V{i}' for i in range(10)},
