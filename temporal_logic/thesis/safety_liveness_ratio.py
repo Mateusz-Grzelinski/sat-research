@@ -5,13 +5,13 @@ import os
 from concurrent.futures.process import ProcessPoolExecutor
 
 from src.generators import IntegerRange
-from src.generators.presets.propositional_temporal_logic.cnf_propositional_temporal_logic_generator import \
-    CNFPropositionalTemporalLogicGenerator
+from src.generators.presets.propositional_temporal_logic.cnf_propositional_temporal_logic_preset import \
+    CNFPropositionalTemporalLogicPreset
 
 logging.basicConfig(level=logging.DEBUG)
 
 
-def job(system_property_gen: CNFPropositionalTemporalLogicGenerator, number_of_instances_in_set: int):
+def job(system_property_gen: CNFPropositionalTemporalLogicPreset, number_of_instances_in_set: int):
     for i, formula in enumerate(system_property_gen.generate()):
         if i >= number_of_instances_in_set:
             break
@@ -43,7 +43,7 @@ if __name__ == '__main__':
         number_of_variables_with_always_connectives = int(number_of_variables * liveness_safety_ratio)
         number_of_variables_with_eventually_connectives = int(
             number_of_variables - number_of_variables_with_always_connectives)
-        system_property_gen = CNFPropositionalTemporalLogicGenerator(
+        system_property_gen = CNFPropositionalTemporalLogicPreset(
             variable_names=variable_names,
             number_of_variables_without_connective=IntegerRange.from_relative(number_of_variables_without_connective,
                                                                               threshold),

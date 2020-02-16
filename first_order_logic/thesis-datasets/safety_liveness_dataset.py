@@ -1,7 +1,7 @@
 import logging
 
 from src.generators import IntegerRange
-from src.generators.presets.first_order_logic import CNFSafetyLivenessGenerator
+from src.generators.presets.first_order_logic import CNFSafetyLivenessPreset
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     for number_of_clauses in test_number_of_clauses:
         for number_of_literals in test_number_of_literals:
-            gen = CNFSafetyLivenessGenerator(
+            gen = CNFSafetyLivenessPreset(
                 variable_names=variable_names,
                 functor_names=functor_names, functor_arity={0},
                 functor_recursion_depth=0,

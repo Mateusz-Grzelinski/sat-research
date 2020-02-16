@@ -4,13 +4,13 @@ import logging
 import os
 from concurrent.futures.process import ProcessPoolExecutor
 
-from src.generators.presets.propositional_temporal_logic.cnf_propositional_temporal_logic_generator_no_solver import \
-    CNFPropositionalTemporalLogicGeneratorNoSolver
+from src.generators.presets.propositional_temporal_logic.cnf_propositional_temporal_logic_preset_no_solver import \
+    CNFPropositionalTemporalLogicPresetNoSolver
 
 logging.basicConfig(level=logging.DEBUG)
 
 
-def job(system_property_gen: CNFPropositionalTemporalLogicGeneratorNoSolver, number_of_instances_in_set: int):
+def job(system_property_gen: CNFPropositionalTemporalLogicPresetNoSolver, number_of_instances_in_set: int):
     for i in range(number_of_instances_in_set):
         formula = system_property_gen.generate()
         if i >= number_of_instances_in_set:
@@ -46,7 +46,7 @@ if __name__ == '__main__':
     pool_executor = ProcessPoolExecutor(max_workers=7)
 
     for clause_lengths, clause_lengths_weights in k_sat_sets:
-        system_property_gen = CNFPropositionalTemporalLogicGeneratorNoSolver(
+        system_property_gen = CNFPropositionalTemporalLogicPresetNoSolver(
             variable_names=variable_names,
             variable_without_connective_probability=0,
             variable_with_always_connective_probability=0.5,

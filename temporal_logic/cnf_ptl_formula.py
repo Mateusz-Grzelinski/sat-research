@@ -2,8 +2,8 @@ import logging
 import os
 
 from src.generators import IntegerRange
-from src.generators.presets.propositional_temporal_logic.cnf_propositional_temporal_logic_generator import \
-    CNFPropositionalTemporalLogicGenerator
+from src.generators.presets.propositional_temporal_logic.cnf_propositional_temporal_logic_preset import \
+    CNFPropositionalTemporalLogicPreset
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -18,7 +18,7 @@ if __name__ == '__main__':
     negation_probability = 0.1
     variable_names = [f'V{i}' for i in range(10)]
 
-    system_property_gen = CNFPropositionalTemporalLogicGenerator(
+    system_property_gen = CNFPropositionalTemporalLogicPreset(
         variable_names=variable_names,
         number_of_variables_without_connective=IntegerRange.from_relative(number_of_variables_without_connective,
                                                                           threshold),

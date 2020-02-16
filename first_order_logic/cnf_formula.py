@@ -1,11 +1,11 @@
 from pprint import pprint
 
 from src.generators import IntegerRange
-from src.generators.presets.first_order_logic import CNFFormulaGenerator
+from src.generators.presets.first_order_logic import CNFFormulaPreset
 from src.syntax_tree.first_order_logic.exporters.tptp import TPTPHeader
 
 if __name__ == '__main__':
-    gen = CNFFormulaGenerator(
+    gen = CNFFormulaPreset(
         functor_names={f'f{i}' for i in range(10)}, functor_arity={0}, functor_recursion_depth=0,
         predicate_names={f'p{i}' for i in range(10)}, predicate_arities={0, 1},
         atom_connectives={None},
