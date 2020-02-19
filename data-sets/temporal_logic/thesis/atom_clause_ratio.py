@@ -16,7 +16,7 @@ def job(system_property_gen: CNFPropositionalTemporalLogicPreset, number_of_inst
         if i >= number_of_instances_in_set:
             break
         path = os.path.join(
-            '_test-inkresat-cnf-atom-clause-ratio',
+            OUT_PATH, '_inkresat-cnf-atom-clause-ratio',
             f'clauses{int(system_property_gen.number_of_clauses.average)}-variables{int(system_property_gen.number_of_variables_with_eventually_connectives.average + system_property_gen.number_of_variables_with_always_connectives.average)}',
             f'{i}'
         )

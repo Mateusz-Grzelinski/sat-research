@@ -12,3 +12,4 @@ venv
 
 test_data
 _test*
+_generated*

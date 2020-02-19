@@ -9,3 +9,5 @@ variable_names = [f'V{i}' for i in range(1000)]
 number_of_clauses = 20_000
 number_of_variables_with_always_connectives = 100_000
 number_of_variables_with_eventually_connectives = 100_000
+
+OUT_PATH = '../../_generated'

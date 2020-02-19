@@ -18,7 +18,7 @@ def job(system_property_gen: CNFPropositionalTemporalLogicPresetNoSolver, number
         k_sat_name = "-".join(str(i) for i in sorted(system_property_gen.clause_lengths)) + '=' + "-".join(
             str(i) for i in sorted(system_property_gen.clause_lengths_weights))
         path = os.path.join(
-            '_test-inkresat-cnf-k-sat',
+            OUT_PATH, '_inkresat-cnf-k-sat',
             f'sat{k_sat_name}',
             f'{i}'
         )
