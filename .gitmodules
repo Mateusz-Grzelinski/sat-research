@@ -1,3 +1,6 @@
 [submodule "logit-formula-generator"]
 	path = logit-formula-generator
 	url = git@github.com:Mateusz-Grzelinski/logit-formula-generator.git
+[submodule "provers-benchmark"]
+	path = provers-benchmark
+	url = git@github.com:Mateusz-Grzelinski/provers-benchmark.git
