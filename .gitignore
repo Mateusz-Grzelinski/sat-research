@@ -1,0 +1,14 @@
+.idea
+__pycache__
+*.pyc
+.pytest_cache
+
+.venv
+venv
+
+# antlr
+*.token
+*.interp
+
+test_data
+_test*
