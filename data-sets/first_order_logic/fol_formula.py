@@ -1,4 +1,4 @@
-from src.generators.presets.first_order_logic import FirstOrderLogicFormulaPreset
+from logic_formula_generator.generators.presets.first_order_logic import FirstOrderLogicFormulaPreset
 
 if __name__ == '__main__':
     gen = FirstOrderLogicFormulaPreset(

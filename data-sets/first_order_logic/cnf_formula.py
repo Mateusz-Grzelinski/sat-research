@@ -1,8 +1,8 @@
 from pprint import pprint
 
-from src.generators import IntegerRange
-from src.generators.presets.first_order_logic import CNFFormulaPreset, CNFFormulaPresetNoSolver
-from src.syntax_tree.first_order_logic.exporters.tptp import TPTPHeader
+from logic_formula_generator.generators import IntegerRange
+from logic_formula_generator.generators.presets.first_order_logic import CNFFormulaPreset, CNFFormulaPresetNoSolver
+from logic_formula_generator.syntax_tree.first_order_logic.exporters.tptp import TPTPHeader
 
 
 def method_with_solver():

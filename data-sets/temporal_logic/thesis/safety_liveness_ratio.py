@@ -4,8 +4,8 @@ import logging
 import os
 from concurrent.futures.process import ProcessPoolExecutor
 
-from src.generators import IntegerRange
-from src.generators.presets.propositional_temporal_logic.cnf_propositional_temporal_logic_preset import \
+from logic_formula_generator.generators import IntegerRange
+from logic_formula_generator.generators.presets.propositional_temporal_logic.cnf_propositional_temporal_logic_preset import \
     CNFPropositionalTemporalLogicPreset
 
 logging.basicConfig(level=logging.DEBUG)
@@ -59,6 +59,7 @@ if __name__ == '__main__':
         future = pool_executor.submit(job, system_property_gen, number_of_instances_in_set)
         futures.append(future)
     concurrent.futures.wait(futures)
-    if any_errors := [exception for future in futures if (exception := future.exception())]:
-        logging.error(any_errors)
+    errors = [future.exception() for future in futures]
+    if any(errors):
+        logging.error(e for e in errors if e)
     logging.info('All done')

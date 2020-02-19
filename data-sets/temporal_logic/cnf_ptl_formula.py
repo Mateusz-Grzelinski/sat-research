@@ -1,8 +1,8 @@
 import logging
 import os
 
-from src.generators import IntegerRange
-from src.generators.presets.propositional_temporal_logic.cnf_propositional_temporal_logic_preset import \
+from logic_formula_generator.generators import IntegerRange
+from logic_formula_generator.generators.presets.propositional_temporal_logic.cnf_propositional_temporal_logic_preset import \
     CNFPropositionalTemporalLogicPreset
 
 logging.basicConfig(level=logging.DEBUG)

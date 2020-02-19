@@ -1,7 +1,7 @@
 import logging
 
-from src.generators import IntegerRange
-from src.generators.presets.first_order_logic import CNFSafetyLivenessPreset
+from logic_formula_generator.generators import IntegerRange
+from logic_formula_generator.generators.presets.first_order_logic import CNFSafetyLivenessPreset
 
 logging.basicConfig(level=logging.DEBUG)
 
