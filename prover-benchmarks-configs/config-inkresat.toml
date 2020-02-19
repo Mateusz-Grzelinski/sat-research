@@ -5,21 +5,21 @@ test_case_timeout = 300
 
 [[testInputs]]
 name="set_1"
-path="../data-sets/_inkresat-cnf-atom-clause-ratio/"
+path="../data-sets/_generated/_inkresat-cnf-atom-clause-ratio/"
 files=["**/*.fml"]
 format="inkresat"
 gather_statistics_from_json_file=true
 
 [[testInputs]]
 name="set_2"
-path="../data-sets/_inkresat-cnf-liveness-safety-ratio"
+path="../data-sets/_generated/_inkresat-cnf-liveness-safety-ratio"
 files=["**/*.fml"]
 format="inkresat"
 gather_statistics_from_json_file=true
 
 [[testInputs]]
 name="set_3"
-path="../data-sets/_inkresat-cnf-k-sat"
+path="../data-sets/_generated/_inkresat-cnf-k-sat"
 files=["**/*.fml"]
 format="inkresat"
 gather_statistics_from_json_file=true
@@ -29,14 +29,14 @@ name="Inkresat"
 # name available in PATH
 executable="inkresat"
 # append to path env variable, comment or leave empty to disable
-PATH="../provers/inkresat/"
+PATH="./provers/inkresat/"
 version="1.0"
 capture_stdout=true
 # options always appended to executable, comment or leave empty to disable
 #options=[""]
 
 [[testSuites.testRuns]]
-name="Inkresat test set_1"
+name="Inkresat test all"
 format="inkresat"
 input_as_last_argument=true
 options=[]
