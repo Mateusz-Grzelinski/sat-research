@@ -1,0 +1,3 @@
+[submodule "logit-formula-generator"]
+	path = logit-formula-generator
+	url = git@github.com:Mateusz-Grzelinski/logit-formula-generator.git
