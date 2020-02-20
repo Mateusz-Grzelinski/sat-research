@@ -1,4 +1,4 @@
-""" In this file is is being measured, how atom-clause ratio affects solution speed """
+""" In this file is is being measured, how variable-clause ratio affects solution speed """
 import concurrent
 import logging
 import os
