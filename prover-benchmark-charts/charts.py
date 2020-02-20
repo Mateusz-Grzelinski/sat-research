@@ -1,29 +1,37 @@
-# import matplotlib.pyplot as plt
 import json
-from typing import Dict, List
+
+import matplotlib.pyplot as plt
 
 from logic_formula_generator.data_model import ConjunctiveNormalFormPropositionalTemporalLogicFormulaInfo
+from provers_benchmark.statistics.stats import Statistics
 
 with open('../prover-benchmark-results/results-inkresat.json') as inkresat_results:
     x = json.load(inkresat_results)
 
-cnf_ptl_infos: Dict[str, List[ConjunctiveNormalFormPropositionalTemporalLogicFormulaInfo]] = {}
-# data is type of Statistics, but represented as dict
-for test_suite in x['test_suites']:
-    for test_run in test_suite['test_run']:
-        test_input_name = test_run['minimal_input_statistics']['name']
-        if not cnf_ptl_infos.get(test_input_name):
-            cnf_ptl_infos[test_input_name] = []
-        info = ConjunctiveNormalFormPropositionalTemporalLogicFormulaInfo()
-        for key, value in x.items():
-            if key == 'clause_sizes':
-                setattr(info, int(key), value)
-            else:
-                setattr(info, key, value)
-        cnf_ptl_infos[test_input_name].append(info)
+stat = Statistics.from_dict(x)
+stat: Statistics
 
-print(cnf_ptl_infos)
 
-# plt.plot([1, 2, 3, 4])
-# plt.ylabel('some numbers')
-# plt.show()
+def get_test_runs_for_input_name(input_name: str):
+    for test_suite in stat.test_suites:
+        for test_run in test_suite.test_run:
+            if test_run.minimal_input_statistics.name != input_name:
+                continue
+            yield test_run
+
+
+inkresat_cnf_liveness_safety_ratio = list(get_test_runs_for_input_name('set_1'))
+
+for i in inkresat_cnf_liveness_safety_ratio:
+    i.input_statistics = ConjunctiveNormalFormPropositionalTemporalLogicFormulaInfo.from_dict(i.input_statistics)
+
+exec_time = [test_run.execution_statistics.execution_time for test_run in inkresat_cnf_liveness_safety_ratio]
+peak_mem = [test_run.execution_statistics.peak_memory for test_run in inkresat_cnf_liveness_safety_ratio]
+num_of_clauses = [test_run.input_statistics.number_of_clauses for test_run in inkresat_cnf_liveness_safety_ratio]
+num_of_var = [test_run.input_statistics.number_of_variables for test_run in inkresat_cnf_liveness_safety_ratio]
+
+plt.scatter(num_of_clauses, exec_time)
+# plt.plot(exec_time)
+plt.ylabel('execution time')
+plt.xlabel('number of clauses')
+plt.show()
