@@ -1,0 +1,46 @@
+[general]
+# generate output to
+output_dir="../prover-benchmark-results/results-spass"
+test_case_timeout = 300
+
+[[translators]]
+from_format="TPTP"
+to_format="LADR"
+extension="in"
+PATH="../provers/LADR-2009-11A/bin"
+executable="tptp_to_ladr"
+options=[]
+
+[[testInputs]]
+name="cnf-atom-clause-ratio"
+path="../data-sets/_generated/_fol-tptp-cnf-atom-clause-ratio/"
+files=["**/*.p"]
+format="TPTP"
+
+[[testInputs]]
+name="cnf-liveness-safety-ratio"
+path="../data-sets/_generated/_fol-tptp-cnf-liveness-safety-ratio"
+files=["**/*.p"]
+format="inkresat"
+gather_statistics_from_json_file=true
+
+[[testInputs]]
+name="cnf-k-sat"
+path="../data-sets/_generated/_fol-tptp-cnf-k-sat"
+files=["**/*.p"]
+format="inkresat"
+gather_statistics_from_json_file=true
+
+# SPASS
+[[testSuites]]
+name="SPASS test suite"
+executable="SPASS"
+PATH="../provers/spass39/"
+version="3.9"
+options=["-PStatistic=0", "-PGiven=0", "-DocProof=0", "-PProblem=0"]
+
+[[testSuites.testCases]]
+name="SPASS test"
+format="TPTP"
+options=[]
+input_after_option="-TPTP"

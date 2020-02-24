@@ -1,0 +1,58 @@
+[general]
+# generate output to
+output_dir="../prover-benchmark-results/results-prover9"
+test_case_timeout = 300
+
+[[translators]]
+from_format="TPTP"
+to_format="LADR"
+extension="in"
+PATH="../provers/LADR-2009-11A/bin"
+executable="tptp_to_ladr"
+options=[]
+
+[[testInputs]]
+name="cnf-atom-clause-ratio"
+path="../data-sets/_generated/_fol-tptp-cnf-atom-clause-ratio"
+files=["**/*.p"]
+format="TPTP"
+gather_statistics_from_json_file=true
+
+[[testInputs]]
+name="cnf-liveness-safety-ratio"
+path="../data-sets/_generated/_fol-tptp-cnf-liveness-safety-ratio"
+files=["**/*.p"]
+format="inkresat"
+gather_statistics_from_json_file=true
+
+[[testInputs]]
+name="cnf-k-sat"
+path="../data-sets/_generated/_fol-tptp-cnf-k-sat"
+files=["**/*.p"]
+format="inkresat"
+gather_statistics_from_json_file=true
+
+# PROVER9
+[[testSuites]]
+name="Prover9 test suite"
+# name available in PATH
+executable="prover9"
+# append to path env variable, comment or leave empty to disable
+PATH="../provers/LADR-2009-11A/bin"
+version="2009-11A"
+# options always appended to executable, comment or leave empty to disable
+#options=[""]
+
+[[testSuites.testCases]]
+# metadata
+name="Prover9 test"
+# what file format is accepted by prover, input will be automatically translated if possible
+format="LADR"
+#input_as_last_argument=true
+#input_after_option="-o"
+options=[]
+
+[[testSuites.testCases]]
+name="Prover9 test set_2"
+format="LADR"
+options=[]

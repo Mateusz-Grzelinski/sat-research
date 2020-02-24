@@ -1,24 +1,24 @@
 [general]
 # generate output to
-output_dir="../prover-benchmark-results/results-inkresat.json"
+output_dir="../prover-benchmark-results/results-inkresat"
 test_case_timeout = 300
 
 [[testInputs]]
-name="set_1"
-path="../data-sets/_generated/_inkresat-cnf-atom-clause-ratio/"
+name="cnf-atom-clause-ratio"
+path="../data-sets/_generated/_inkresat-cnf-atom-clause-ratio"
 files=["**/*.fml"]
 format="inkresat"
 gather_statistics_from_json_file=true
 
 [[testInputs]]
-name="set_2"
+name="cnf-liveness-safety-ratio"
 path="../data-sets/_generated/_inkresat-cnf-liveness-safety-ratio"
 files=["**/*.fml"]
 format="inkresat"
 gather_statistics_from_json_file=true
 
 [[testInputs]]
-name="set_3"
+name="cnf-k-sat"
 path="../data-sets/_generated/_inkresat-cnf-k-sat"
 files=["**/*.fml"]
 format="inkresat"
