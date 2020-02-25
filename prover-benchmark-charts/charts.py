@@ -15,7 +15,7 @@ stat: Statistics
 
 
 def get_test_runs_for_input_name(input_name: str):
-    for test_suite in stat.test_suites:
+    for test_suite in stat.test_runs:
         for test_run in test_suite.test_run:
             if test_run.minimal_input_statistics.name != input_name:
                 continue
