@@ -1,0 +1,28 @@
+general:
+  result_path: ./prover-benchmark-results/results-inkresat
+  result_as_json: True
+  result_as_csv: True
+  test_timeout: 300
+
+test_inputs:
+  - name: example_input1
+    patterns:
+      - ./data-sets/_generated/_inkresat-cnf-atom-clause-ratio/**/*.fml
+    format: inkresat
+  - name: example_input2
+    patterns:
+      - ./data-sets/_generated/_inkresat-cnf-k-sat/**/*.fml
+    format: inkresat
+  - name: example_input3
+    patterns:
+      - ./data-sets/_generated/_inkresat-cnf-liveness-safety-ratio/**/*.fml
+    format: inkresat
+
+test_suites:
+  - name: Inkresat test suite
+    command: ./provers/inkresat/inkresat
+    input_mode: stdin
+    version: "1.0"
+    required_format: inkresat
+    save_stdout: True
+    save_stderr: True

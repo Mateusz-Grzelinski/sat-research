@@ -11,10 +11,9 @@ logging.basicConfig(level=logging.DEBUG)
 
 OUT_PATH = '../../_generated'
 
-ATOM_CLAUSE_RATIO_PATH = "_fol-tptp-cnf-atom-clause-ratio"
+ATOM_CLAUSE_RATIO_PATH = "_fol-tptp-cnf-negation-ratio"
 
-literal_negation_chance = 0.5
-number_of_formula_instances = 30
+number_of_formula_instances = 50
 
 variable_names = [f'V{i}' for i in range(50)]
 functor_names = [f'f{i}' for i in range(50)]
@@ -25,7 +24,7 @@ def job(system_property_gen: CNFSafetyLivenessPresetNoSolver):
     for i in range(number_of_formula_instances):
         out_file_path = os.path.join(
             OUT_PATH, ATOM_CLAUSE_RATIO_PATH,
-            f'clauses{system_property_gen.min_number_of_clauses}-literals{system_property_gen.min_number_of_literals}-ratio{"-".join(str(i) for i in system_property_gen.clause_lengths_weights)}',
+            f'negation_chance{system_property_gen.literal_negation_chance}',
             f'{i}'
         )
         logging.info(f'generating formula {i}/{number_of_formula_instances}: {out_file_path}')
@@ -44,21 +43,10 @@ def job(system_property_gen: CNFSafetyLivenessPresetNoSolver):
 
 if __name__ == '__main__':
     test_min_number_of_clauses = [0]
-    test_min_number_of_literals = [5000, 10_000]
+    test_min_number_of_literals = [5000]
     clause_lengths = [i for i in range(2, 10)]
-    clause_ratios = [
-        (1, 1, 1, 1, 1, 1, 1, 1),
-        (2, 2, 2, 2, 2, 2, 1, 1),
-        (4, 4, 4, 2, 2, 2, 1, 1),
-        (6, 6, 6, 4, 4, 4, 1, 1),
-        (8, 8, 8, 6, 6, 6, 2, 1),
-        (10, 8, 8, 6, 6, 6, 2, 1),
-        (1, 1, 2, 2, 2, 2, 2, 2),
-        (1, 1, 2, 2, 4, 4, 4, 4),
-        (1, 1, 2, 2, 4, 6, 8, 8),
-        (1, 1, 2, 2, 4, 6, 8, 10),
-    ]
-
+    clause_ratios = [(1, 1, 1, 1, 1, 1, 1, 1), ]
+    test_literal_negation_chance = [i / 10 for i in range(0, 10)]
     predicate_arities = [i for i in range(5)]
 
     futures = []
@@ -66,21 +54,22 @@ if __name__ == '__main__':
     for number_of_clauses in test_min_number_of_clauses:
         for number_of_literals in test_min_number_of_literals:
             for clause_weights in clause_ratios:
-                gen = CNFSafetyLivenessPresetNoSolver(
-                    variable_names=variable_names,
-                    functor_names=functor_names, functor_arity={0},
-                    functor_recursion_depth=0,
-                    predicate_names=predicate_names, predicate_arities=predicate_arities,
-                    atom_connectives={None},
-                    clause_lengths=clause_lengths,
-                    clause_lengths_weights=clause_weights,
-                    min_number_of_clauses=number_of_clauses,
-                    min_number_of_literals=number_of_literals,
-                    literal_negation_chance=literal_negation_chance,
-                )
+                for literal_negation_chance in test_literal_negation_chance:
+                    gen = CNFSafetyLivenessPresetNoSolver(
+                        variable_names=variable_names,
+                        functor_names=functor_names, functor_arity={0},
+                        functor_recursion_depth=0,
+                        predicate_names=predicate_names, predicate_arities=predicate_arities,
+                        atom_connectives={None},
+                        clause_lengths=clause_lengths,
+                        clause_lengths_weights=clause_weights,
+                        min_number_of_clauses=number_of_clauses,
+                        min_number_of_literals=number_of_literals,
+                        literal_negation_chance=literal_negation_chance,
+                    )
 
-                future = pool_executor.submit(job, gen)
-                futures.append(future)
+                    future = pool_executor.submit(job, gen)
+                    futures.append(future)
     concurrent.futures.wait(futures)
     errors = [future.exception() for future in futures]
     if any(errors):

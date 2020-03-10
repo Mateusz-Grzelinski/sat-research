@@ -1,0 +1,32 @@
+general:
+  result_path: ./prover-benchmark-results/results-spass
+  result_as_json: True
+  result_as_csv: True
+  test_timeout: 300
+
+test_inputs:
+  - name: number_of_predicates_and_variables
+    patterns:
+      - ./data-sets/_generated/_fol-tptp-cnf-number-of-predicates-and-variables/**/*.p
+    format: TPTP
+  - name: atom_clause_ratio
+    patterns:
+    - ./data-sets/_generated/_fol-tptp-cnf-atom-clause-ratio/**/*.p
+    format: TPTP
+#  - name: liveness_safety_ratio
+#    patterns:
+#      - ./data-sets/_generated/_fol-tptp-cnf-liveness-safety-ratio/**/*.p
+#    format: TPTP
+#  - name: k-sat
+#    patterns:
+#      - ./data-sets/_generated/_fol-tptp-cnf-k-sat/**/*.p
+#    format: TPTP
+
+test_suites:
+  - name: SPASS test suite
+    command: ../provers/spass39/SPASS -PStatistic=0 -PGiven=0 -DocProof=0 -PProblem=0 -TPTP $INPUT_PATH
+    input_mode: argument
+    required_format: TPTP
+    version: "3.9"
+    save_stdout: True
+    save_stderr: True

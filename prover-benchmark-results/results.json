@@ -4,312 +4,86 @@
       "name": "Prover9 test suite",
       "program_name": "prover9",
       "program_version": "2009-11A",
-      "command": "./provers/LADR-2009-11A/bin/prover9",
+      "command": "../provers/LADR-2009-11A/bin/prover9",
       "execution_statistics": {
-        "execution_time": 0.11021128599895746,
-        "peak_memory": 1204224,
-        "disk_reads": 31252,
-        "disk_writes": 31252,
+        "execution_time": 1.1837092010027845,
+        "peak_memory": 36319232,
+        "disk_reads": 1133111,
+        "disk_writes": 1133111,
         "returncode": 2
       },
       "minimal_input_statistics": {
         "name": "example_input1",
-        "path": "../data-sets/_generated/_fol-tptp-cnf-atom-clause-ratio/clauses100-literals1000/1.p",
+        "path": "./data-sets/_generated/_fol-tptp-cnf-atom-clause-ratio/clauses100-literals1000/0.p",
         "format": "TPTP",
         "translated_with": {
           "from_format": "TPTP",
           "to_format": "LADR",
-          "command": "./provers/LADR-2009-11A/bin/tptp_to_ladr",
+          "command": "../provers/LADR-2009-11A/bin/tptp_to_ladr",
           "input_mode": "stdin",
           "output_mode": "stdout"
         }
       },
       "input_formula_statistics": {
         "number_of": {
-          "variables": 727,
-          "functors": 20,
-          "predicates": 20,
-          "atoms": 451,
-          "clauses": 163
+          "variables": 50915,
+          "functors": 50,
+          "predicates": 50,
+          "atoms": 21963,
+          "clauses": 9932
         },
         "number_of_instances": {
-          "variables": 1067,
-          "functors": 916,
-          "predicates": 1001,
-          "atoms": 1001,
-          "clauses": 163
+          "variables": 54828,
+          "functors": 54865,
+          "predicates": 54717,
+          "atoms": 54717,
+          "clauses": 10001
         },
         "clause_lengths": {
-          "10": 24,
-          "7": 12,
-          "9": 21,
-          "6": 12,
-          "2": 26,
-          "4": 13,
-          "3": 13,
-          "8": 21,
-          "5": 21
+          "2": 1286,
+          "8": 1235,
+          "6": 1279,
+          "4": 1290,
+          "5": 1180,
+          "3": 1258,
+          "7": 1250,
+          "9": 1223
         },
-        "number_of_horn_clauses_instances": 101,
-        "number_of_singleton_variables": 470,
-        "number_of_negated_literal_instances": 226,
+        "number_of_horn_clauses_instances": 857,
+        "number_of_singleton_variables": 47214,
+        "number_of_negated_literal_instances": 40848,
         "number_of_equality_atom_instances": 0,
         "predicate_arities": {
-          "4": 181,
-          "3": 216,
-          "0": 193,
-          "2": 200,
-          "1": 211
+          "2": 10950,
+          "4": 11007,
+          "1": 10894,
+          "3": 10957,
+          "0": 10909
         },
         "functor_arities": {
-          "0": 916
+          "0": 54865
         },
         "term_instances_depths": {
-          "0": 916
+          "0": 54865
         },
         "additional_statistics": {
-          "number_of_variable_names": 10,
-          "number_of_predicate_names": 20,
-          "number_of_functor_names": 20
+          "number_of_variable_names": 50,
+          "number_of_predicate_names": 50,
+          "number_of_functor_names": 50
         }
       },
       "output": {
         "status": "unsatisfiable",
-        "stderr": "\nSEARCH FAILED\n\n------ process 24239 exit (sos_empty) ------\n\u0007",
+        "stderr": "\nSEARCH FAILED\n\n------ process 11327 exit (sos_empty) ------\n\u0007",
         "stdout": null
-      }
-    },
-    {
-      "name": "Prover9 test suite",
-      "program_name": "prover9",
-      "program_version": "2009-11A",
-      "command": "./provers/LADR-2009-11A/bin/prover9",
-      "execution_statistics": {
-        "execution_time": 0.10557511600200087,
-        "peak_memory": 1212416,
-        "disk_reads": 14868,
-        "disk_writes": 14868,
-        "returncode": 2
-      },
-      "minimal_input_statistics": {
-        "name": "example_input1",
-        "path": "../data-sets/_generated/_fol-tptp-cnf-atom-clause-ratio/clauses100-literals1000/2.p",
-        "format": "TPTP",
-        "translated_with": {
-          "from_format": "TPTP",
-          "to_format": "LADR",
-          "command": "./provers/LADR-2009-11A/bin/tptp_to_ladr",
-          "input_mode": "stdin",
-          "output_mode": "stdout"
-        }
-      },
-      "input_formula_statistics": {
-        "number_of": {
-          "variables": 715,
-          "functors": 20,
-          "predicates": 20,
-          "atoms": 415,
-          "clauses": 167
-        },
-        "number_of_instances": {
-          "variables": 1023,
-          "functors": 993,
-          "predicates": 1002,
-          "atoms": 1002,
-          "clauses": 167
-        },
-        "clause_lengths": {
-          "3": 16,
-          "5": 24,
-          "10": 16,
-          "6": 19,
-          "7": 22,
-          "2": 17,
-          "4": 18,
-          "9": 20,
-          "8": 15
-        },
-        "number_of_horn_clauses_instances": 120,
-        "number_of_singleton_variables": 488,
-        "number_of_negated_literal_instances": 175,
-        "number_of_equality_atom_instances": 0,
-        "predicate_arities": {
-          "3": 196,
-          "1": 192,
-          "0": 207,
-          "2": 196,
-          "4": 211
-        },
-        "functor_arities": {
-          "0": 993
-        },
-        "term_instances_depths": {
-          "0": 993
-        },
-        "additional_statistics": {
-          "number_of_variable_names": 10,
-          "number_of_predicate_names": 20,
-          "number_of_functor_names": 20
-        }
-      },
-      "output": {
-        "status": "unsatisfiable",
-        "stderr": "\nSEARCH FAILED\n\n------ process 24243 exit (sos_empty) ------\n\u0007",
-        "stdout": null
-      }
-    },
-    {
-      "name": "SPASS test suite",
-      "program_name": "SPASS",
-      "program_version": "3.9",
-      "command": "./provers/spass39/SPASS -PStatistic=0 -PGiven=0 -DocProof=0 -PProblem=0 -TPTP $INPUT_PATH",
-      "execution_statistics": {
-        "execution_time": 0.1019704720019945,
-        "peak_memory": 1265664,
-        "disk_reads": 14868,
-        "disk_writes": 14868,
-        "returncode": 0
-      },
-      "minimal_input_statistics": {
-        "name": "example_input1",
-        "path": "../data-sets/_generated/_fol-tptp-cnf-atom-clause-ratio/clauses100-literals1000/1.p",
-        "format": "TPTP",
-        "translated_with": null
-      },
-      "input_formula_statistics": {
-        "number_of": {
-          "variables": 727,
-          "functors": 20,
-          "predicates": 20,
-          "atoms": 451,
-          "clauses": 163
-        },
-        "number_of_instances": {
-          "variables": 1067,
-          "functors": 916,
-          "predicates": 1001,
-          "atoms": 1001,
-          "clauses": 163
-        },
-        "clause_lengths": {
-          "10": 24,
-          "7": 12,
-          "9": 21,
-          "6": 12,
-          "2": 26,
-          "4": 13,
-          "3": 13,
-          "8": 21,
-          "5": 21
-        },
-        "number_of_horn_clauses_instances": 101,
-        "number_of_singleton_variables": 470,
-        "number_of_negated_literal_instances": 226,
-        "number_of_equality_atom_instances": 0,
-        "predicate_arities": {
-          "4": 181,
-          "3": 216,
-          "0": 193,
-          "2": 200,
-          "1": 211
-        },
-        "functor_arities": {
-          "0": 916
-        },
-        "term_instances_depths": {
-          "0": 916
-        },
-        "additional_statistics": {
-          "number_of_variable_names": 10,
-          "number_of_predicate_names": 20,
-          "number_of_functor_names": 20
-        }
-      },
-      "output": {
-        "status": "unsatisfiable",
-        "stderr": "",
-        "stdout": "\nSPASS V 3.9 \nSPASS beiseite: Completion found.\nProblem: ../data-sets/_generated/_fol-tptp-cnf-atom-clause-ratio/clauses100-literals1000/1.p \n"
-      }
-    },
-    {
-      "name": "SPASS test suite",
-      "program_name": "SPASS",
-      "program_version": "3.9",
-      "command": "./provers/spass39/SPASS -PStatistic=0 -PGiven=0 -DocProof=0 -PProblem=0 -TPTP $INPUT_PATH",
-      "execution_statistics": {
-        "execution_time": 0.10140134500034037,
-        "peak_memory": 1269760,
-        "disk_reads": 6676,
-        "disk_writes": 6676,
-        "returncode": 0
-      },
-      "minimal_input_statistics": {
-        "name": "example_input1",
-        "path": "../data-sets/_generated/_fol-tptp-cnf-atom-clause-ratio/clauses100-literals1000/2.p",
-        "format": "TPTP",
-        "translated_with": null
-      },
-      "input_formula_statistics": {
-        "number_of": {
-          "variables": 715,
-          "functors": 20,
-          "predicates": 20,
-          "atoms": 415,
-          "clauses": 167
-        },
-        "number_of_instances": {
-          "variables": 1023,
-          "functors": 993,
-          "predicates": 1002,
-          "atoms": 1002,
-          "clauses": 167
-        },
-        "clause_lengths": {
-          "3": 16,
-          "5": 24,
-          "10": 16,
-          "6": 19,
-          "7": 22,
-          "2": 17,
-          "4": 18,
-          "9": 20,
-          "8": 15
-        },
-        "number_of_horn_clauses_instances": 120,
-        "number_of_singleton_variables": 488,
-        "number_of_negated_literal_instances": 175,
-        "number_of_equality_atom_instances": 0,
-        "predicate_arities": {
-          "3": 196,
-          "1": 192,
-          "0": 207,
-          "2": 196,
-          "4": 211
-        },
-        "functor_arities": {
-          "0": 993
-        },
-        "term_instances_depths": {
-          "0": 993
-        },
-        "additional_statistics": {
-          "number_of_variable_names": 10,
-          "number_of_predicate_names": 20,
-          "number_of_functor_names": 20
-        }
-      },
-      "output": {
-        "status": "unsatisfiable",
-        "stderr": "",
-        "stdout": "\nSPASS V 3.9 \nSPASS beiseite: Completion found.\nProblem: ../data-sets/_generated/_fol-tptp-cnf-atom-clause-ratio/clauses100-literals1000/2.p \n"
       }
     }
   ],
-  "date": 1582639042.12997,
+  "date": 1583226939.811095,
   "hardware": {
     "system": "Linux",
-    "release": "5.4.18-1-MANJARO",
-    "version": "#1 SMP PREEMPT Thu Feb 6 11:41:30 UTC 2020",
+    "release": "5.4.22-1-MANJARO",
+    "version": "#1 SMP PREEMPT Mon Feb 24 09:01:11 UTC 2020",
     "cpu": {
       "name": "",
       "min_frequency": 800.0,
@@ -317,6 +91,6 @@
       "logical_threads": 8,
       "physical_threads": 4
     },
-    "total_memory": 12384342016
+    "total_memory": 12384325632
   }
 }
