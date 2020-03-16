@@ -1,26 +1,39 @@
 general:
   result_path: ./prover-benchmark-results/results-spass
+  result_each_input_to_separate_file: True
   result_as_json: True
   result_as_csv: True
   test_timeout: 300
 
 test_inputs:
-  - name: number_of_predicates_and_variables
+  - name: predicate-arity
+    patterns:
+      - ./data-sets/_generated/_fol-tptp-cnf-predicate-arity/**/*.p
+    format: TPTP
+  - name: negation-ratio
+    patterns:
+      - ./data-sets/_generated/_fol-tptp-cnf-negation-ratio/**/*.p
+    format: TPTP
+  - name: number-of-functors
+    patterns:
+      - ./data-sets/_generated/_fol-tptp-cnf-number-of-functors/**/*.p
+    format: TPTP
+  - name: number-of-predicates-and-variables
     patterns:
       - ./data-sets/_generated/_fol-tptp-cnf-number-of-predicates-and-variables/**/*.p
     format: TPTP
-  - name: atom_clause_ratio
+  - name: atom-clause-ratio
     patterns:
-    - ./data-sets/_generated/_fol-tptp-cnf-atom-clause-ratio/**/*.p
+      - ./data-sets/_generated/_fol-tptp-cnf-atom-clause-ratio/**/*.p
     format: TPTP
-#  - name: liveness_safety_ratio
+#  - name: liveness-safety-ratio
 #    patterns:
 #      - ./data-sets/_generated/_fol-tptp-cnf-liveness-safety-ratio/**/*.p
 #    format: TPTP
-#  - name: k-sat
-#    patterns:
-#      - ./data-sets/_generated/_fol-tptp-cnf-k-sat/**/*.p
-#    format: TPTP
+  - name: k-sat
+    patterns:
+      - ./data-sets/_generated/_fol-tptp-cnf-k-sat/**/*.p
+    format: TPTP
 
 test_suites:
   - name: SPASS test suite

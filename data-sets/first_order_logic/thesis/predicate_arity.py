@@ -11,8 +11,9 @@ logging.basicConfig(level=logging.DEBUG)
 
 OUT_PATH = '../../_generated'
 
-ATOM_CLAUSE_RATIO_PATH = "_fol-tptp-cnf-negation-ratio"
+ATOM_CLAUSE_RATIO_PATH = "_fol-tptp-cnf-predicate-arity"
 
+literal_negation_chance = 0.5
 number_of_formula_instances = 30
 
 variable_names = [f'V{i}' for i in range(50)]
@@ -24,7 +25,7 @@ def job(system_property_gen: CNFSafetyLivenessPresetNoSolver):
     for i in range(number_of_formula_instances):
         out_file_path = os.path.join(
             OUT_PATH, ATOM_CLAUSE_RATIO_PATH,
-            f'negation_chance{system_property_gen.literal_negation_chance}',
+            f'predicate_arities{"-".join(str(i) for i in system_property_gen.predicate_arities)}',
             f'{i}'
         )
         logging.info(f'generating formula {i}/{number_of_formula_instances}: {out_file_path}')
@@ -46,15 +47,27 @@ if __name__ == '__main__':
     test_min_number_of_literals = [5000]
     clause_lengths = [i for i in range(2, 10)]
     clause_ratios = [(1, 1, 1, 1, 1, 1, 1, 1), ]
-    test_literal_negation_chance = [i / 10 for i in range(0, 10)]
-    predicate_arities = [i for i in range(5)]
+    test_predicate_arities = [
+        (0, 1, 2, 3, 4, 5),
+        (1, 2, 3, 4, 5),
+        (2, 3, 4, 5),
+        (3, 4, 5),
+        (4, 5),
+        (5, ),
+        (0, 1, 2, 3, 4),
+        (0, 1, 2, 3),
+        (0, 1, 2),
+        (0, 1),
+        (0, ),
+    ]
+    # predicate_arities = [i for i in range(5)]
 
     futures = []
     pool_executor = ProcessPoolExecutor(max_workers=7)
     for number_of_clauses in test_min_number_of_clauses:
         for number_of_literals in test_min_number_of_literals:
             for clause_weights in clause_ratios:
-                for literal_negation_chance in test_literal_negation_chance:
+                for predicate_arities in test_predicate_arities:
                     gen = CNFSafetyLivenessPresetNoSolver(
                         variable_names=variable_names,
                         functor_names=functor_names, functor_arity={0},

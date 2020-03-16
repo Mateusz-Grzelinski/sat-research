@@ -1,19 +1,20 @@
 general:
   result_path: ./prover-benchmark-results/results-inkresat
+  result_each_input_to_separate_file: True
   result_as_json: True
   result_as_csv: True
   test_timeout: 300
 
 test_inputs:
-  - name: example_input1
+  - name: atom-clause-ratio
     patterns:
       - ./data-sets/_generated/_inkresat-cnf-atom-clause-ratio/**/*.fml
     format: inkresat
-  - name: example_input2
+  - name:  k-sat
     patterns:
       - ./data-sets/_generated/_inkresat-cnf-k-sat/**/*.fml
     format: inkresat
-  - name: example_input3
+  - name:  liveness-safety-ratio
     patterns:
       - ./data-sets/_generated/_inkresat-cnf-liveness-safety-ratio/**/*.fml
     format: inkresat

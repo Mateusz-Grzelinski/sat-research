@@ -1,8 +1,6 @@
 general:
-#  result_path: ./prover-benchmark-results/results-number-of-predicates-and-variables-prover9
-#  result_path: ./prover-benchmark-results/results-number-of-functors
-#  result_path: ./prover-benchmark-results/results-atom-clause-ratio
-  result_path: ./prover-benchmark-results/results-negation-ratio
+  result_path: ./prover-benchmark-results/results
+  result_each_input_to_separate_file: True
   result_as_json: True
   result_as_csv: True
   test_timeout: 300
@@ -15,30 +13,34 @@ translators:
     output_mode: stdout
 
 test_inputs:
-   - name: negation_ratio
-     patterns:
-       - ./data-sets/_generated/_fol-tptp-cnf-negation-ratio/**/*.p
-     format: TPTP
-#  - name: number_of_functors
-#    patterns:
-#      - ./data-sets/_generated/_fol-tptp-cnf-number-of-functors/**/*.p
-#    format: TPTP
-#  - name: number_of_predicates_and_variables
-#    patterns:
-#      - ./data-sets/_generated/_fol-tptp-cnf-number-of-predicates-and-variables/**/*.p
-#    format: TPTP
-#  - name: atom_clause_ratio
-#    patterns:
-#    - ./data-sets/_generated/_fol-tptp-cnf-atom-clause-ratio/**/*.p
-#    format: TPTP
-#  - name: liveness_safety_ratio
+  - name: predicate-arity
+    patterns:
+      - ./data-sets/_generated/_fol-tptp-cnf-predicate-arity/**/*.p
+    format: TPTP
+  - name: negation-ratio
+    patterns:
+      - ./data-sets/_generated/_fol-tptp-cnf-negation-ratio/**/*.p
+    format: TPTP
+  - name: number-of-functors
+    patterns:
+      - ./data-sets/_generated/_fol-tptp-cnf-number-of-functors/**/*.p
+    format: TPTP
+  - name: number-of-predicates-and-variables
+    patterns:
+      - ./data-sets/_generated/_fol-tptp-cnf-number-of-predicates-and-variables/**/*.p
+    format: TPTP
+  - name: atom-clause-ratio
+    patterns:
+    - ./data-sets/_generated/_fol-tptp-cnf-atom-clause-ratio/**/*.p
+    format: TPTP
+#  - name: liveness-safety-ratio
 #    patterns:
 #      - ./data-sets/_generated/_fol-tptp-cnf-liveness-safety-ratio/**/*.p
 #    format: TPTP
-#  - name: k-sat
-#    patterns:
-#      - ./data-sets/_generated/_fol-tptp-cnf-k-sat/**/*.p
-#    format: TPTP
+  - name: k-sat
+    patterns:
+      - ./data-sets/_generated/_fol-tptp-cnf-k-sat/**/*.p
+    format: TPTP
 
 test_suites:
   - name: Prover9 test suite
